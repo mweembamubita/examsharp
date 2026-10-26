@@ -1,0 +1,60 @@
+name: organize
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  organize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          set -e
+          mkdir -p "app" "app/admin" "app/admin/promoters" "app/api/admin/drive-image" "app/auth/callback" "app/dashboard" "app/exam/[id]" "app/forgot-password" "app/promoter/dashboard" "app/promoter/setup" "app/promoter/sign-in" "app/promoter/sign-up" "app/refer" "app/reset-password" "app/sign-in" "app/sign-up" "components" "components/ui" "lib" "lib/supabase" "public"
+          git mv "admin-overview.tsx" "components/admin-overview.tsx"
+          git mv "apple-icon.png" "public/apple-icon.png"
+          git mv "auth-store.ts" "lib/auth-store.ts"
+          git mv "button.tsx" "components/ui/button.tsx"
+          git mv "client.ts" "lib/supabase/client.ts"
+          git mv "dashboard-header.tsx" "components/dashboard-header.tsx"
+          git mv "exam-review.tsx" "components/exam-review.tsx"
+          git mv "exam-store.ts" "lib/exam-store.ts"
+          git mv "globals.css" "app/globals.css"
+          git mv "group-exam.tsx" "components/group-exam.tsx"
+          git mv "icon-dark-32x32.png" "public/icon-dark-32x32.png"
+          git mv "icon-light-32x32.png" "public/icon-light-32x32.png"
+          git mv "icon.svg" "public/icon.svg"
+          git mv "layout.tsx" "app/layout.tsx"
+          git mv "page (1).tsx" "app/admin/page.tsx"
+          git mv "page (10).tsx" "app/dashboard/page.tsx"
+          git mv "page (11).tsx" "app/promoter/sign-up/page.tsx"
+          git mv "page (12).tsx" "app/promoter/sign-in/page.tsx"
+          git mv "page (13).tsx" "app/promoter/setup/page.tsx"
+          git mv "page (14).tsx" "app/promoter/dashboard/page.tsx"
+          git mv "page (2).tsx" "app/admin/promoters/page.tsx"
+          git mv "page (3).tsx" "app/forgot-password/page.tsx"
+          git mv "page (4).tsx" "app/refer/page.tsx"
+          git mv "page (5).tsx" "app/sign-up/page.tsx"
+          git mv "page (7).tsx" "app/page.tsx"
+          git mv "page (8).tsx" "app/sign-in/page.tsx"
+          git mv "page (9).tsx" "app/reset-password/page.tsx"
+          git mv "page.tsx" "app/exam/[id]/page.tsx"
+          git mv "placeholder-logo.png" "public/placeholder-logo.png"
+          git mv "placeholder-logo.svg" "public/placeholder-logo.svg"
+          git mv "placeholder-user.jpg" "public/placeholder-user.jpg"
+          git mv "placeholder.jpg" "public/placeholder.jpg"
+          git mv "placeholder.svg" "public/placeholder.svg"
+          git mv "pricing-card.tsx" "components/pricing-card.tsx"
+          git mv "progress-stats.tsx" "components/progress-stats.tsx"
+          git mv "proxy.ts" "lib/supabase/proxy.ts"
+          git mv "route (6).ts" "app/api/admin/drive-image/route.ts"
+          git mv "route.ts" "app/auth/callback/route.ts"
+          git mv "server.ts" "lib/supabase/server.ts"
+          git mv "sign-in-form.tsx" "app/sign-in/sign-in-form.tsx"
+          git mv "utils.ts" "lib/utils.ts"
+          printf 'node_modules\n.next\n.env*.local\n.vercel\n' > .gitignore
+          printf 'NEXT_PUBLIC_SUPABASE_URL=\nNEXT_PUBLIC_SUPABASE_ANON_KEY=\n' > .env.example
+          git config user.name github-actions
+          git config user.email actions@github.com
+          git add -A
+          git commit -m 'Organise app files into folders'
+          git push
