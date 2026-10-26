@@ -1,0 +1,5 @@
+'use client'
+
+import { Check, Zap, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+export function PricingCard({ userPlan }: { userPlan: string; userId: string }) { if (userPlan !== 'free') return null; return <div className="rounded-xl border border-primary/20 bg-primary/5 p-6"><div className="flex items-start justify-between"><div><h3 className="text-lg font-bold">Upgrade to Pro</h3><p className="text-sm text-muted-foreground mt-1">Unlock unlimited exams and detailed answer explanations.</p></div><Zap className="text-primary" /></div><div className="space-y-2 my-5">{['Unlimited exams per month', 'Detailed answer review', 'Progress analytics'].map((feature) => <div key={feature} className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-primary" />{feature}</div>)}</div><a href="mailto:hello@examsharp.example?subject=Upgrade%20to%20Pro" className="w-full inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">Contact us to upgrade<ArrowRight className="w-4 h-4 ml-2" /></a></div> }
